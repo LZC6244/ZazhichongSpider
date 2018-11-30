@@ -17,7 +17,7 @@ class Ab74SpiderSpider(scrapy.Spider):
     '''
     name = 'ab74_spider'
     allowed_domains = ['www.ab74.com']
-    start_urls = ['https://www.ab74.com/book/77109.shtml']
+    start_urls = ['https://www.ab74.com/book/71138.shtml']
     # 书籍本地txt文件名
     book_name_txt = ''
 
