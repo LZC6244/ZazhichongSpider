@@ -11,13 +11,15 @@ sys.setdefaultencoding('utf-8')
 
 class Ab74SpiderSpider(scrapy.Spider):
     '''
-    需要通过爬取第一章之后不断前往下一页爬取,不能直接从书籍目录页获取所有章节url
+    1.需要通过爬取第一章之后不断前往下一页爬取,不能直接从书籍目录页获取所有章节url
     因为有部分章节在目录不显示(隐藏了)
     直接从目录页爬取会导致章节缺失
+    2.有部分小说章节内容前半部分是文字后半部分是图片
+    此类型章节不爬取(包含全图片)
     '''
     name = 'ab74_spider'
     allowed_domains = ['www.ab74.com']
-    start_urls = ['https://www.ab74.com/book/71138.shtml']
+    start_urls = ['https://www.ab74.com/book/71107.shtml']
     # 书籍本地txt文件名
     book_name_txt = ''
 
