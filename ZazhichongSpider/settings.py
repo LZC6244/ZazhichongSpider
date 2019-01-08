@@ -98,3 +98,22 @@ USER_AGENTS = [
     'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1',
     'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36'
 ]
+
+# 1. 增加了一个去重容器类的配置, 作用使用Redis的set集合来存储请求的指纹数据, 从而实现请求去重的持久化
+#
+# DUPEFILTER_CLASS = “scrapy_redis.dupefilter.RFPDupeFilter”
+# 2. 增加了调度的配置, 作用: 把请求对象存储到Redis数据, 从而实现请求的持久化.
+#
+# SCHEDULER = “scrapy_redis.scheduler.Scheduler”
+# 3. 配置调度器是否要持久化, 也就是当爬虫结束了, 要不要清空Redis中请求队列和去重指纹的set。如果是True, 就表示要持久化存储, 就不清空数据, 否则清空数据
+#
+# SCHEDULER_PERSIST = True
+# 4. redis_url配置
+#
+# REDIS_URL = ‘reds://127.0.0.1:6379/2’
+# 5. 如果需要把数据存储到Redis数据库中, 可以配置RedisPipeline
+#
+# ITEM_PIPELINES = {
+# # 把爬虫爬取的数据存储到Redis数据库中
+# ‘scrapy_redis.pipelines.RedisPipeline’: 400,
+# }
